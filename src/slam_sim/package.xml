@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+
+  <name>slam_sim</name>
+  <version>1.0.0</version>
+
+  <description>
+    ROS 2 Humble SLAM simulation using Gazebo Fortress,
+    differential drive robot, LiDAR and SLAM Toolbox.
+  </description>
+
+  <maintainer email="anjithbineesh@gmail.com">Anjith Bineesh</maintainer>
+  <license>Apache-2.0</license>
+
+  <!-- Build system -->
+  <buildtool_depend>ament_python</buildtool_depend>
+
+  <!-- Python launch system -->
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>ament_index_python</exec_depend>
+
+  <!-- Robot description -->
+  <exec_depend>xacro</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+
+  <!-- Gazebo Fortress and ROS integration -->
+  <exec_depend>ros_gz_sim</exec_depend>
+  <exec_depend>ros_gz_bridge</exec_depend>
+
+  <!-- ROS message dependencies -->
+  <exec_depend>rosgraph_msgs</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>tf2_msgs</exec_depend>
+
+  <!-- SLAM and visualisation -->
+  <exec_depend>slam_toolbox</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+
+  <!-- Teleoperation and map saving -->
+  <exec_depend>teleop_twist_keyboard</exec_depend>
+  <exec_depend>nav2_map_server</exec_depend>
+
+  <!-- Testing -->
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+
+</package>

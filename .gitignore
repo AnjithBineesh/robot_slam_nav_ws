@@ -1,0 +1,40 @@
+# ROS 2 colcon workspace build artifacts
+build/
+install/
+log/
+
+# Python caches & packaging
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# ROS / Gazebo runtime & temporary files
+*.bag
+*.db3
+*.mcap
+.ros/
+.ignition/
+.gazebo/
+
+# Editor / IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
