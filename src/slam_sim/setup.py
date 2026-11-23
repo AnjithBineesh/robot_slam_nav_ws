@@ -54,6 +54,13 @@ setup(
             glob('worlds/*'),
         ),
     ],
+    entry_points={
+        'console_scripts': [
+            'scan_monitor = slam_sim.scan_monitor:main',
+            'odometry_monitor = slam_sim.odometry_monitor:main',
+            'odometry_noise = slam_sim.odometry_noise:main',
+        ],
+    },
 
     install_requires=['setuptools'],
 

@@ -19,17 +19,17 @@ def generate_launch_description():
             # LiDAR: Gazebo -> ROS 2
             '/scan@sensor_msgs/msg/LaserScan[ignition.msgs.LaserScan',
 
-            # Odometry: Gazebo -> ROS 2
+            # Raw odometry is filtered before publishing to /odom and /tf
             '/odom@nav_msgs/msg/Odometry[ignition.msgs.Odometry',
 
             # Velocity commands: ROS 2 -> Gazebo
             '/cmd_vel@geometry_msgs/msg/Twist]ignition.msgs.Twist',
 
             # Joint states: Gazebo -> ROS 2
-            '/world/rooms_world/model/diff_bot/joint_state@sensor_msgs/msg/JointState[ignition.msgs.Model',
-
-            # Robot TF: Gazebo -> ROS 2
-            '/model/diff_bot/tf@tf2_msgs/msg/TFMessage[ignition.msgs.Pose_V',
+            (
+                '/world/rooms_world/model/diff_bot/joint_state@'
+                'sensor_msgs/msg/JointState[ignition.msgs.Model'
+            ),
 
         ],
 
@@ -39,11 +39,9 @@ def generate_launch_description():
                 '/world/rooms_world/model/diff_bot/joint_state',
                 '/joint_states'
             ),
-
-            # Gazebo TF -> ROS TF
             (
-                '/model/diff_bot/tf',
-                '/tf'
+                '/odom',
+                '/odom_raw'
             ),
         ],
     )

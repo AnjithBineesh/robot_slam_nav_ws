@@ -26,6 +26,13 @@ def generate_launch_description():
     world = LaunchConfiguration('world')
     use_rviz = LaunchConfiguration('rviz')
     gui = LaunchConfiguration('gui')
+    lidar_update_rate = LaunchConfiguration('lidar_update_rate')
+    lidar_noise_stddev = LaunchConfiguration('lidar_noise_stddev')
+    wheel_radius = LaunchConfiguration('wheel_radius')
+    drive_wheel_radius = LaunchConfiguration('drive_wheel_radius')
+    wheel_separation = LaunchConfiguration('wheel_separation')
+    drive_wheel_separation = LaunchConfiguration('drive_wheel_separation')
+    wheel_mu = LaunchConfiguration('wheel_mu')
 
     # File paths
     robot_file = os.path.join(
@@ -50,7 +57,21 @@ def generate_launch_description():
     robot_description = ParameterValue(
         Command([
             'xacro ',
-            robot_file
+            robot_file,
+            ' lidar_update_rate:=',
+            lidar_update_rate,
+            ' lidar_noise_stddev:=',
+            lidar_noise_stddev,
+            ' wheel_radius:=',
+            wheel_radius,
+            ' drive_wheel_radius:=',
+            drive_wheel_radius,
+            ' wheel_separation:=',
+            wheel_separation,
+            ' drive_wheel_separation:=',
+            drive_wheel_separation,
+            ' wheel_mu:=',
+            wheel_mu,
         ]),
         value_type=str
     )
@@ -170,6 +191,41 @@ def generate_launch_description():
         DeclareLaunchArgument(
             'gui',
             default_value='true'
+        ),
+        DeclareLaunchArgument(
+            'lidar_update_rate',
+            default_value='10',
+            description='LiDAR scan update rate in Hz'
+        ),
+        DeclareLaunchArgument(
+            'lidar_noise_stddev',
+            default_value='0.0',
+            description='Gaussian LiDAR range noise standard deviation in metres'
+        ),
+        DeclareLaunchArgument(
+            'wheel_radius',
+            default_value='0.05',
+            description='Physical and Gazebo wheel radius in metres'
+        ),
+        DeclareLaunchArgument(
+            'wheel_separation',
+            default_value='0.34',
+            description='Physical wheel separation in metres'
+        ),
+        DeclareLaunchArgument(
+            'drive_wheel_radius',
+            default_value='0.05',
+            description='Differential-drive odometry wheel radius in metres'
+        ),
+        DeclareLaunchArgument(
+            'drive_wheel_separation',
+            default_value='0.31',
+            description='Differential-drive odometry wheel separation in metres'
+        ),
+        DeclareLaunchArgument(
+            'wheel_mu',
+            default_value='1.0',
+            description='Wheel-ground friction coefficient'
         ),
 
         # Start Gazebo
